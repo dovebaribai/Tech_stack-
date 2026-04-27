@@ -646,14 +646,11 @@ const tick = setInterval(() => {
 }, 1000);
 
 // ── AFFILIATE TRACKING ──
-const BASE_URL = "https://payhip.com/b/xeqSM";
-function getParam(n){ return new URLSearchParams(window.location.search).get(n); }
+const AFFILIATE_URL = "https://payhip.com/b/xeqSM/af69ecddda3c77b";
 function setLinks(){
-  const af = getParam('af');
-  const url = af ? BASE_URL + '/' + encodeURIComponent(af) : BASE_URL;
   ['hero-dl','final-dl','float-dl','nav-dl','proof-dl'].forEach(id => {
     const el = document.getElementById(id);
-    if(el) el.href = url;
+    if(el) el.href = AFFILIATE_URL;
   });
 }
 setLinks();
@@ -670,11 +667,7 @@ document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 document.querySelectorAll('.buy-trigger').forEach(el => {
   el.addEventListener('click', function(e) {
     e.preventDefault();
-    if(window.Payhip && Payhip.Checkout) {
-      Payhip.Checkout.open({ product: 'xeqSM' });
-    } else {
-      window.open('https://payhip.com/b/xeqSM', '_blank');
-    }
+    window.open('https://payhip.com/b/xeqSM/af69ecddda3c77b', '_blank');
   });
 });
 </script>
